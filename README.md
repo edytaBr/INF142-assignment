@@ -1,3 +1,3 @@
 Navn: Edyta Bredla
 
-Gruppe 1
+Gruppe 51
