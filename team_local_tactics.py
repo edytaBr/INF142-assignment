@@ -79,15 +79,16 @@ def print_match_summary(match: Match):
 
 
 
-def input_champion(name,
+def input_champion(prompt: str,
+                   color: str,
                    champions: dict[Champion],
                    player1: list[str],
-                   player2: list[str]) -> None:
+                   player2: list[str]):
 
     # Prompt the player to choose a champion and provide the reason why
     # certain champion cannot be selected
     while True:
-        match name:
+        match Prompt.ask(f'[{color}]{prompt}'):
             case name if name not in champions:
                 print(f'The champion {name} is not available. Try again.')
             case name if name in player1:
@@ -97,6 +98,7 @@ def input_champion(name,
             case _:
                 player1.append(name)
                 break
+    return player1 
 
 
 def game(a, b, c, d):
@@ -112,10 +114,8 @@ def game(a, b, c, d):
     
     player1 = [a,b]
     player2 = [c,d]
+
     
- #   for name in [a, b, c, d]:
-    #    input_champion( name, champions, player1, player2)
-   #     input_champion( name, champions, player2, player1)
 
     print('\n')
 
@@ -128,7 +128,7 @@ def game(a, b, c, d):
 
     return (match)
 
-def clientSiteGame(num):
+def clientSiteGame():
     print('\n'
           'Welcome to [bold yellow]Team Local Tactics[/bold yellow]!'
           '\n'
@@ -139,8 +139,13 @@ def clientSiteGame(num):
     print_available_champs(champions)
     print('\n')
     
-    players = []
+def clientSiteGame2(num, player2):
+       
+    player1 = []
+    champions = load_some_champs()
+
+        
     for n in range(2):
-        print("Player ", num,  " Fighter ", n+1)
-        players.append((input(" Name "))) # take input
-    return players
+        player1 = input_champion('Player '+num, 'red', champions, player1, player2)
+        
+    return player1
