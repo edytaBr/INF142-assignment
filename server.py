@@ -11,8 +11,6 @@ from rich import print
 import pickle 
 import team_local_tactics
 import mongoDB
-import socket
-import os
 from _thread import *
 
 
@@ -21,7 +19,7 @@ from _thread import *
 #Server
 ServerSideSocket = socket.socket()
 host = socket.gethostname()
-port = 8080 # initiate port no above 1024
+port = 7026 # initiate port no above 1024
 ThreadCount = 0
 try:
     ServerSideSocket.bind((host, port))
@@ -39,6 +37,8 @@ connections = []
 
 
 
+
+               
 def new_game(connections):
     for conn in connections:
         conn.send(str(ThreadCount).encode())
@@ -66,8 +66,6 @@ def multi_threaded_client(connection):
             connections[0].send(result[0].encode())
             connections[1].send(result[0].encode())
             mongoDB.db(result[0],result[1], result[2], out)
-            
-            
             
             
 

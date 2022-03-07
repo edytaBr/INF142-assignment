@@ -8,32 +8,29 @@ Created on Mon Feb 28 12:57:34 2022
 
 import socket
 import pickle 
-from champlistloader import load_some_champs
-from core import Champion, Match, Shape, Team
 from rich import print
-from rich.prompt import Prompt
-from rich.table import Table
 import team_local_tactics
 
 
-
-
 def client_program():
-    
     host = socket.gethostname()  # as both code is running on same pc
-    port = 8080  # socket server port number
+    port = 7026  # socket server port number
     client_socket = socket.socket()  # instantiate
     client_socket.connect((host, port))  # connect to the server
     send_package = ""
-    
+    game = []
     while send_package.lower().strip() != 'n':
         num = client_socket.recv(4096).decode()
-        game = team_local_tactics.clientSiteGame(num)
+        team_local_tactics.clientSiteGame()
+        game = (team_local_tactics.clientSiteGame2(num, game))
+        print("length", len(game))
         send_package = pickle.dumps(game)
-        client_socket.send(send_package)        
+        client_socket.send(send_package)
+                
         data = client_socket.recv(4096).decode()  # receive response
         print('Received from server: ' + data)  # show in terminal
         send_package = input("Do you want to play again, Y/N ")
+        client_socket.send(str(send_package).encode())
 
     client_socket.close()  # close the connection
 
