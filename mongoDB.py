@@ -11,7 +11,7 @@ from pymongo import MongoClient
 
 
 def db(data, score1, score2, players):
-    myclient = MongoClient("mongodb+srv://test:test@cluster0.yglec.mongodb.net/myFirstDatabase?retryWrites=true&w=majority")
+    myclient = MongoClient("")
     mydb = myclient["mydatabase"]
     mycol = mydb["results"]
     mydict = {"Result": data, "Score Read Team": score1, "Score Blue Team": score2, "Players": str(players)}
