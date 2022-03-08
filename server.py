@@ -8,7 +8,6 @@ Created on Mon Feb 28 12:57:35 2022
 
 import socket
 from rich import print
-import pickle 
 import team_local_tactics
 import mongoDB
 from _thread import *

@@ -7,7 +7,6 @@ Created on Mon Feb 28 12:57:34 2022
 """
 
 import socket
-import pickle 
 from rich import print
 import team_local_tactics
 import json
