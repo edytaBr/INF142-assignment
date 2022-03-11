@@ -25,6 +25,8 @@ Gruppe 51
 
 1. Create `mongoDB Atlas` as it is shown in tutorial on `mitt.uib.no`, remember to define correct `Network Access`
 2. Create `.env` file which defines `MongoClient`: [Standard Connection String Format](https://docs.mongodb.com/manual/reference/connection-string/)
-3. Data saved in mongoDD atlas should look as followed:
-4. ![Saved results from the game](assets/results.png)
+4. Example results saved in mongoDB
+
+[<img src="./assets/results.png" width="60%" height="40%" />](assets/results.png)
+
 
